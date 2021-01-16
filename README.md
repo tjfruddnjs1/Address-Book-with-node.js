@@ -10,7 +10,7 @@
 
 ## 주소록 - 프로젝트 생성 및 sequelize로 DB 연결
 
-- [package.json]() : 사용 패키지
+- [package.json](https://github.com/tjfruddnjs1/Address-Book-with-node.js/blob/main/package.json) : 사용 패키지
 
 ```node
 npm i --save ejs express express-session morgan mysql2 sequelize sequelize-cli
@@ -18,8 +18,8 @@ npm i --save ejs express express-session morgan mysql2 sequelize sequelize-cli
 npm i -D nodemon
 ```
 
-- [index.js]() : 연결 패키지 세팅
-- [models/index.js]() : 데이터베이스 연결 설정
+- [index.js](https://github.com/tjfruddnjs1/Address-Book-with-node.js/blob/main/index.js) : 연결 패키지 세팅
+- [models/index.js](https://github.com/tjfruddnjs1/Address-Book-with-node.js/blob/main/models/index.js) : 데이터베이스 연결 설정
 
 - 데이터베이스 연결 상태 및 address 이름의 database 생성
   <br>
