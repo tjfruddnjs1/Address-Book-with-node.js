@@ -1,0 +1,33 @@
+{
+  "name": "Address-Book-with-node.js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tjfruddnjs1/Address-Book-with-node.js.git"
+  },
+  "keywords": [],
+  "author": "seol",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tjfruddnjs1/Address-Book-with-node.js/issues"
+  },
+  "homepage": "https://github.com/tjfruddnjs1/Address-Book-with-node.js#readme",
+  "dependencies": {
+    "ejs": "3.1.5",
+    "express": "4.17.1",
+    "express-session": "1.17.1",
+    "morgan": "1.10.0",
+    "mysql2": "2.2.5",
+    "sequelize": "6.3.5",
+    "sequelize-cli": "6.2.0"
+  },
+  "devDependencies": {
+    "nodemon": "2.0.7"
+  }
+}
