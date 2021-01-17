@@ -168,17 +168,17 @@ models.sequelize.query(query, { replacements: values }).spread(
 );
 ```
 
-- [routes/contacts.js]() : GET을 수행할때 findByPk를 사용하여 가져왔습니다.
+- [routes/contacts.js](https://github.com/tjfruddnjs1/Address-Book-with-node.js/blob/main/routes/contacts.js) & [views/contacts/show.ejs](https://github.com/tjfruddnjs1/Address-Book-with-node.js/blob/main/views/contacts/show.ejs): GET을 수행할때 findByPk를 사용하여 가져왔습니다.
 
 > 3. method override package
 
-- [views/show.ejs]()
+- [views/show.ejs](https://github.com/tjfruddnjs1/Address-Book-with-node.js/blob/main/views/contacts/show.ejs)
 - a tag로는 get만 요청할수 있기 때문에 delete는 form으로 처리해야합니다. form에서도 post밖에 요청할 수 없기 때문에 ?\_method=delete이 action에 query로 추가되었습니다. 이부분은 서버의 `method override package`에 의해 처리되어 delete 요청을 변경됩니다.
 
 > 4. favicon.ico error message 해결
 
 - 아이콘이 없거나 경로가 맞지 않으면 생기는 오류
-- 아래 코드를 [partials/head.ejs]()에 추가
+- 아래 코드를 [partials/head.ejs](https://github.com/tjfruddnjs1/Address-Book-with-node.js/blob/main/views/partials/head.ejs)에 추가
 
 ```html
 <html>
