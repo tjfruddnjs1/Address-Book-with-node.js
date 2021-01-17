@@ -97,9 +97,9 @@ npx sequelize init
 
 - [config/config.json](https://github.com/tjfruddnjs1/Address-Book-with-node.js/tree/main/config) 을 통한 database 설정
 - [models/index.js](https://github.com/tjfruddnjs1/Address-Book-with-node.js/blob/main/models/index.js) : 테이블 전체적인 layout 설정
-- [models/contact.js](https://github.com/tjfruddnjs1/Address-Book-with-node.js/blob/main/models/contact.js) : name, email, phone 컬럼 설정 > `name : primary key`
+- [models/contact.js](https://github.com/tjfruddnjs1/Address-Book-with-node.js/blob/main/models/contact.js) : name, email, phone 컬럼 설정 > ~~`name : primary key`~~
 - timeStamps 속성을 false 함을 통한 created, deleted 등 속성 제거
-- name을 primary key로 설정함에 따라 `id(auto increment)속성` 제거
+- ~~name을 primary key로 설정함에 따라 `id(auto increment)속성` 제거~~
 - `primary key 미 설정시 id라는 PK 자동 설정`
 - **1. 결과사진 : 메인화면**
   <br>
@@ -115,8 +115,6 @@ npx sequelize init
   <br>
   <img src="https://user-images.githubusercontent.com/41010744/104848584-06f23580-5929-11eb-9824-46821a9bef99.png">
   <br>
-
-- 만약 이름을 입력하지 않고 form을 submit하면 에러가 표시 > PK(Primary Key)이기 때문
 
 ## 4. 주소록 - Show, Edit, Update, Destroy
 
