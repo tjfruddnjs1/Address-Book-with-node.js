@@ -1,7 +1,7 @@
 // index.js
 const express = require('express');
-const path = require('path');
 const morgan = require('morgan');
+const methodOverride = require('method-override');
 
 const { sequelize } = require('./models');
 const indexRouter = require('./routes');
@@ -24,6 +24,7 @@ app.use(morgan('dev'));
 app.use(express.static(__dirname+'/public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(methodOverride('_method'));
 
 app.use('/', indexRouter);
 app.use('/contacts', contactRouter);

@@ -4,7 +4,6 @@ module.exports = class Contact extends Sequelize.Model {
   static init(sequelize) {
     return super.init({
       name: {
-        primaryKey : true,
         type: Sequelize.STRING(50),
         allowNull: false,
         unique: true,
