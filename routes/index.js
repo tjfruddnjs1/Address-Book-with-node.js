@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get('/', async (req, res, next) => {
   try {
-    res.render('contacts/index.ejs');
+    res.redirect('/contacts');
   } catch (err) {
     console.error(err);
     next(err);

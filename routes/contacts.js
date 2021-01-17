@@ -4,10 +4,12 @@ const Contact = require('../models/contact');
 const router = express.Router();
 
 
-router.route('/contacts')
+router.route('/')
     .get(async (req,res,next)=>{
         try{
-            const contacts = await Contact.findAll(["name", "email", "phone"]);
+            const contacts = await Contact.findAll({
+                attributes: ["name", "email", "phone"],
+            });
             res.render('contacts/index', {contacts : contacts});
         }catch(err){
             console.error(err);
@@ -29,7 +31,7 @@ router.route('/contacts')
         }
     });
 
-router.get('/contact/new', async(req, res, next)=>{
+router.get('/new', async(req, res, next)=>{
     try{
     res.render('contacts/new');
     }catch(err){
