@@ -69,16 +69,14 @@ app.use(express.urlencoded({ extended: false }));
 ```
 
 > 폴더 내 구조
-> <br>
-> <img scr="https://user-images.githubusercontent.com/41010744/104846780-9b579a80-591f-11eb-979d-995f7dff4826.png">
-> <br>
+> <br> > <img scr="https://user-images.githubusercontent.com/41010744/104846780-9b579a80-591f-11eb-979d-995f7dff4826.png"> > <br>
 
 > 참고 사이트(http://a-mean-blog.com/ko/blog/Node-JS-첫걸음/주소록-만들기) 와의 다른 처리 내용
 
 1. **router 분리 및 기능별 다른 처리 : try/catch + async/await**
 
-- [routes/index.js]() : Home Router/GET
-- [routes/contacts.js]() : User Info Router/GET,POST, User registration Route/GET
+- [routes/index.js](https://github.com/tjfruddnjs1/Address-Book-with-node.js/blob/main/routes/index.js) : Home Router/GET
+- [routes/contacts.js](https://github.com/tjfruddnjs1/Address-Book-with-node.js/blob/main/routes/contacts.js) : User Info Router/GET,POST, User registration Route/GET
 
 2. **Mongoose Module -> Seuquelize & Sequelize-cli & Mysql2 Moudule**
 
@@ -88,9 +86,9 @@ app.use(express.urlencoded({ extended: false }));
 npx sequelize init
 ```
 
-- [config/config.json]() 을 통한 database 설정
-- [models/index.js]() : 테이블 전체적인 layout 설정
-- [models/contact.js]() : name, email, phone 컬럼 설정 > `name : primary key`
+- [config/config.json](https://github.com/tjfruddnjs1/Address-Book-with-node.js/tree/main/config) 을 통한 database 설정
+- [models/index.js](https://github.com/tjfruddnjs1/Address-Book-with-node.js/blob/main/models/index.js) : 테이블 전체적인 layout 설정
+- [models/contact.js](https://github.com/tjfruddnjs1/Address-Book-with-node.js/blob/main/models/contact.js) : name, email, phone 컬럼 설정 > `name : primary key`
 - timeStamps 속성을 false 함을 통한 created, deleted 등 속성 제거
 - name을 primary key로 설정함에 따라 id(auto increment)속성 제거
 - **1. 결과사진 : 메인화면**
