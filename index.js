@@ -2,11 +2,13 @@
 const express = require('express');
 const path = require('path');
 const morgan = require('morgan');
+
 const { sequelize } = require('./models');
+const indexRouter = require('./routes');
+const contactRouter = require('./routes/contacts');
 
 const app = express();
 
-app.use(morgan('dev'));
 app.set('port', process.env.PORT || 3001);
 app.set('view engine', 'ejs');
 
@@ -18,9 +20,13 @@ sequelize.sync({ force: false })
     console.error(err);
   });
 
+app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname+'/public')));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.use('/', indexRouter);
+app.use('/contacts', contactRouter);
 
   app.use((req, res, next) => {
     const error =  new Error(`${req.method} ${req.url} 라우터가 없습니다.`);
@@ -32,9 +38,10 @@ app.use(express.urlencoded({ extended: false }));
     res.locals.message = err.message;
     res.locals.error = process.env.NODE_ENV !== 'production' ? err : {};
     res.status(err.status || 500);
-    res.render('error');
+    console.log(err.status +' error 발생')
   })
 
 app.listen(app.get('port'), ()=> {
   console.log(app.get('port'), '번 포트에서 대기중');
 });
+
