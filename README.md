@@ -5,13 +5,18 @@
 1.  http://a-mean-blog.com/ko/blog/Node-JS-첫걸음/주소록-만들기 > 프로젝트 전반적인 내용
 
 - **차별점** : `mongoose > sequelize sequelize-cli mysql2`
-- **차별점2** : `routes 분리 및 기능 구조화`
+- **차별점2** : `routes 분리 및 재사용을 위한 기능 구조화`
 
 2. NodeJS 교과서 개정 2판
 
 ## 1. 주소록 - 프로젝트 생성 및 sequelize로 DB 연결
 
 - [package.json](https://github.com/tjfruddnjs1/Address-Book-with-node.js/blob/main/package.json) : 사용 패키지
+
+- 버전 정보 및 설치 명령어
+  <br>
+  <img src="https://user-images.githubusercontent.com/41010744/104850159-d0b8b400-5930-11eb-9291-b6f1596e78ff.png">
+  <br>
 
 ```node
 npm i --save ejs express express-session morgan mysql2 sequelize sequelize-cli
@@ -73,7 +78,7 @@ app.use(express.urlencoded({ extended: false }));
 
 > 참고 사이트(http://a-mean-blog.com/ko/blog/Node-JS-첫걸음/주소록-만들기) 와의 다른 처리 내용
 
-1. **router 분리 및 기능별 다른 처리 : try/catch + async/await**
+1. **router 분리 및 기능별 다른 처리 : try/catch + async/await > Promise**
 
 - [routes/index.js](https://github.com/tjfruddnjs1/Address-Book-with-node.js/blob/main/routes/index.js) : Home Router/GET
 - [routes/contacts.js](https://github.com/tjfruddnjs1/Address-Book-with-node.js/blob/main/routes/contacts.js) : User Info Router/GET,POST, User registration Route/GET
@@ -90,7 +95,8 @@ npx sequelize init
 - [models/index.js](https://github.com/tjfruddnjs1/Address-Book-with-node.js/blob/main/models/index.js) : 테이블 전체적인 layout 설정
 - [models/contact.js](https://github.com/tjfruddnjs1/Address-Book-with-node.js/blob/main/models/contact.js) : name, email, phone 컬럼 설정 > `name : primary key`
 - timeStamps 속성을 false 함을 통한 created, deleted 등 속성 제거
-- name을 primary key로 설정함에 따라 id(auto increment)속성 제거
+- name을 primary key로 설정함에 따라 `id(auto increment)속성` 제거
+- `primary key 미 설정시 id라는 PK 자동 설정`
 - **1. 결과사진 : 메인화면**
   <br>
   <img src="https://user-images.githubusercontent.com/41010744/104848532-bb3f8c00-5928-11eb-88ce-b8c40e94790d.png">
@@ -106,7 +112,7 @@ npx sequelize init
   <img src="https://user-images.githubusercontent.com/41010744/104848584-06f23580-5929-11eb-9824-46821a9bef99.png">
   <br>
 
-- 만약 이름을 입력하지 않고 form을 submit하면 에러가 표시
+- 만약 이름을 입력하지 않고 form을 submit하면 에러가 표시 > PK(Primary Key)이기 때문
 <!-- - 7 actions 중 update와 destroy는 `HTTP methods`중 put과 delete를 사용하는데, 대부분의 브라우저의 form은 get, post만을 허용하고 나머지를 허용하지 않는다. 브라우저에서 허용하진 않지만 나중에 API로 연결할때는 문제가 X > HTTP를 올바르게 사용하는 법을 익히는 것이 중요
 - 현재는 `method override`라는 package를 설치하여 이를 우회
 
