@@ -197,22 +197,9 @@ res.redirect("/contacts");
 
 - 해당 에러는 res.redirect 처리가 잘못되었을 때 발생하고 보통의 경우 if문과 반복문에 중복처리가 되어 발생한다고 합니다. client에 데이터 전송 후 처리를 올바르게 해야한다고 생각했습니다. 해결은 `res.json`과 `res.redirect`의 위치를 바꿔주어 해결했습니다.
 
-- > **1. 결과사진 : 현재 Database 상태 및 수정/삭제 버튼**
-  > <br>
-  > <img src="https://user-images.githubusercontent.com/41010744/104856966-ada1fa80-5958-11eb-84f1-58ea5204efeb.png">
-  > <br>
-- > **2. 결과사진 : 수정된 Database 상태 및 수정하는 모습**
-  > <br>
-  > <img src="https://user-images.githubusercontent.com/41010744/104856997-e80b9780-5958-11eb-8a02-dbdd54bb49fc.png">
-  > <br>
-  > <img src="https://user-images.githubusercontent.com/41010744/104857012-f5c11d00-5958-11eb-9e1b-a223a2cdcd1c.png">
-  > <br>
-- > **3. 결과사진 : 삭제된 Database 상태 및 삭제하는 모습**
-  > <br>
-  > <img src="https://user-images.githubusercontent.com/41010744/104857034-1be6bd00-5959-11eb-8a99-f9ea0bdfe227.png">
-  > <br>
-  > <img src="https://user-images.githubusercontent.com/41010744/104857039-23a66180-5959-11eb-9a84-ce349cfbfc9c.png">
-  > <br>
+- > **1. 결과사진 : 현재 Database 상태 및 수정/삭제 버튼** > <br> > <img src="https://user-images.githubusercontent.com/41010744/104856966-ada1fa80-5958-11eb-84f1-58ea5204efeb.png"> > <br>
+- > **2. 결과사진 : 수정된 Database 상태 및 수정하는 모습** > <br> > <img src="https://user-images.githubusercontent.com/41010744/104856997-e80b9780-5958-11eb-8a02-dbdd54bb49fc.png"> > <br> > <img src="https://user-images.githubusercontent.com/41010744/104857012-f5c11d00-5958-11eb-9e1b-a223a2cdcd1c.png"> > <br>
+- > **3. 결과사진 : 삭제된 Database 상태 및 삭제하는 모습** > <br> > <img src="https://user-images.githubusercontent.com/41010744/104857034-1be6bd00-5959-11eb-8a99-f9ea0bdfe227.png"> > <br> > <img src="https://user-images.githubusercontent.com/41010744/104857039-23a66180-5959-11eb-9a84-ce349cfbfc9c.png"> > <br>
 
 ## 5. 주소록 - Module 만들기
 
@@ -235,7 +222,7 @@ const express = require("express");
 
 ## [Final] 6. 주소록 - bootstrap으로 스타일링 하기
 
-> [views/partials/head.ejs]()
+> [views/partials/head.ejs](https://github.com/tjfruddnjs1/Address-Book-with-node.js/blob/main/views/partials/head.ejs)
 
 1. Mobile 브라우저는 데스크탑 사이트를 작은 화면에 보여주기 위해 자동으로 줌아웃 가능 : `viewport meta` 태그로 이를 조절 가능
 
@@ -247,7 +234,7 @@ const express = require("express");
 - `<link rel="stylesheet" href=...>`로 bootstrap css파일을들, `<script src=...>`로 bootstrap에 필요한 js파일들을 불러옵니다.
 - 여기서 중요한 한가지가 있는데 내 css파일들 (여기서는 'master.css')들을 다른 라이브러리의 css파일들(여기서는 'bootstrap.min.css')뒤에 둬야합니다. css파일간에 충돌이 있는 경우 `뒤에 호출된 스타일 효과를 우선시`
 
-> [views/partials/nav.ejs]()
+> [views/partials/nav.ejs](https://github.com/tjfruddnjs1/Address-Book-with-node.js/blob/main/views/partials/nav.ejs)
 
 - nav는 class판 추가된 것이 아니라 bootstrap nav 형식에 맞춰서 꽤 많이 변경이 이루어졌는데, 세부사항은 https://getbootstrap.com/docs/4.1/components/navbar 에서 공부하고 간략히 몇가지 class만 짚고 넘어감
 
@@ -261,33 +248,24 @@ const express = require("express");
 | navbar-nav     | 실제 메뉴들을 가지는 class                                                                                                              |
 | nav-item       | 개별 메뉴들을 가지는 class                                                                                                              |
 
-> [views/contacts/index.ejs]()
+> [views/contacts/index.ejs](https://github.com/tjfruddnjs1/Address-Book-with-node.js/blob/main/views/contacts/index.ejs)
 
 - 기존 코드에서 container, list-group, list-group-item class 등의 bootstrap class가 추가
 
-> [views/contacts/new.ejs]()
+> [views/contacts/new.ejs](https://github.com/tjfruddnjs1/Address-Book-with-node.js/blob/main/views/contacts/new.ejs)
 
 - 기존 코드에서 container, btn btn-primary, form-group, form-control 등의 bootstrap class가 추가
 
-> [views/contacts/edit.ejs]()
+> [views/contacts/edit.ejs](https://github.com/tjfruddnjs1/Address-Book-with-node.js/blob/main/views/contacts/edit.ejs)
 
 - 기존 코드에서 container, btn btn-primary, form-group, form-control 등의 bootstrap class 가 추가
 
-> [views/contacts/show.ejs])()
+> [views/contacts/show.ejs](https://github.com/tjfruddnjs1/Address-Book-with-node.js/blob/main/views/contacts/show.ejs)
 
 - 기존 코드에서 containewr, btn btn-light class 등의 bootstrap class가 추가되고, bootstrap card(https://getbootstrap.com/docs/4.1/components/card)가 적용
 
-- > **1. 결과사진 : 메인 화면**
-  > <br>
-  > <img src="https://user-images.githubusercontent.com/41010744/104906566-3b1c3380-59c7-11eb-85bc-568ceba16b82.png">
-  > <br>
+- > **1. 결과사진 : 메인 화면** > <br> > <img src="https://user-images.githubusercontent.com/41010744/104906566-3b1c3380-59c7-11eb-85bc-568ceba16b82.png"> > <br>
 
-- > **2. 결과사진 : 주소록 정보**
-  > <br>
-  > <img src="https://user-images.githubusercontent.com/41010744/104906696-656df100-59c7-11eb-9e1c-d4386a3530b8.png">
-  > <br>
+- > **2. 결과사진 : 주소록 정보** > <br> > <img src="https://user-images.githubusercontent.com/41010744/104906696-656df100-59c7-11eb-9e1c-d4386a3530b8.png"> > <br>
 
-- > **3. 결과사진 : 회원 가입**
-  > <br>
-  > <img src="https://user-images.githubusercontent.com/41010744/104906800-83d3ec80-59c7-11eb-97ab-870cc99a094a.png">
-  > <br>
+- > **3. 결과사진 : 회원 가입** > <br> > <img src="https://user-images.githubusercontent.com/41010744/104906800-83d3ec80-59c7-11eb-97ab-870cc99a094a.png"> > <br>
