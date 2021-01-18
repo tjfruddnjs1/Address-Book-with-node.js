@@ -5,7 +5,7 @@
 1.  http://a-mean-blog.com/ko/blog/Node-JS-첫걸음/주소록-만들기 > 프로젝트 전반적인 내용
 
 - **차별점** : `mongoose > sequelize sequelize-cli mysql2`
-- **차별점2** : `routes 분리 및 재사용을 위한 기능 구조화`
+- ~~**차별점2** : `routes 분리 및 재사용을 위한 기능 구조화`~~ : **5. 주소록 : Module 만들기**에서 구현
 - **차별점3** : `favicon.ico 404 error message 해결`
 - **차별점4** : `create, update, delete 이후 index 페이지로의 이동`
 
@@ -197,19 +197,97 @@ res.redirect("/contacts");
 
 - 해당 에러는 res.redirect 처리가 잘못되었을 때 발생하고 보통의 경우 if문과 반복문에 중복처리가 되어 발생한다고 합니다. client에 데이터 전송 후 처리를 올바르게 해야한다고 생각했습니다. 해결은 `res.json`과 `res.redirect`의 위치를 바꿔주어 해결했습니다.
 
-- **1. 결과사진 : 현재 Database 상태 및 수정/삭제 버튼**
-  <br>
-  <img src="https://user-images.githubusercontent.com/41010744/104856966-ada1fa80-5958-11eb-84f1-58ea5204efeb.png">
-  <br>
-- **2. 결과사진 : 수정된 Database 상태 및 수정하는 모습**
-  <br>
-  <img src="https://user-images.githubusercontent.com/41010744/104856997-e80b9780-5958-11eb-8a02-dbdd54bb49fc.png">
-  <br>
-  <img src="https://user-images.githubusercontent.com/41010744/104857012-f5c11d00-5958-11eb-9e1b-a223a2cdcd1c.png">
-  <br>
-- **3. 결과사진 : 삭제된 Database 상태 및 삭제하는 모습**
-  <br>
-  <img src="https://user-images.githubusercontent.com/41010744/104857034-1be6bd00-5959-11eb-8a99-f9ea0bdfe227.png">
-  <br>
-  <img src="https://user-images.githubusercontent.com/41010744/104857039-23a66180-5959-11eb-9a84-ce349cfbfc9c.png">
-  <br>
+- > **1. 결과사진 : 현재 Database 상태 및 수정/삭제 버튼**
+  > <br>
+  > <img src="https://user-images.githubusercontent.com/41010744/104856966-ada1fa80-5958-11eb-84f1-58ea5204efeb.png">
+  > <br>
+- > **2. 결과사진 : 수정된 Database 상태 및 수정하는 모습**
+  > <br>
+  > <img src="https://user-images.githubusercontent.com/41010744/104856997-e80b9780-5958-11eb-8a02-dbdd54bb49fc.png">
+  > <br>
+  > <img src="https://user-images.githubusercontent.com/41010744/104857012-f5c11d00-5958-11eb-9e1b-a223a2cdcd1c.png">
+  > <br>
+- > **3. 결과사진 : 삭제된 Database 상태 및 삭제하는 모습**
+  > <br>
+  > <img src="https://user-images.githubusercontent.com/41010744/104857034-1be6bd00-5959-11eb-8a99-f9ea0bdfe227.png">
+  > <br>
+  > <img src="https://user-images.githubusercontent.com/41010744/104857039-23a66180-5959-11eb-9a84-ce349cfbfc9c.png">
+  > <br>
+
+## 5. 주소록 - Module 만들기
+
+> Moudule이란 ?
+
+- 다른 파일에 있는 object를 불러와서 사용 가능 > 코드를 다른 파일로 분리하는 것
+- 한 파일의 object를 다른 파일에서 사용가능하게 위해서는 해당 object를 `module.exports`에 담아줘야 한다.
+- 다른 파일의 module을 불러오기 위해 `require`함수를 사용
+- 이때 require 함수에 parameter로 대상 module의 상대 위치와 파일이름을 문자열로 넣습니다.
+- `js파일만 module로 불러올 수 있기 때문에 파일이름에서 .js는 생략`
+- 만약 module이 node_modules 폴더에 있다면 위치를 생략 가능 > npm install로 설치된 package들이 이 경우 헤댕
+
+```js
+module.exports = myModule;
+const myModule = require("./my-module");
+const express = require("express");
+```
+
+- 처음 프로젝트 시작할때부터 model과 routes를 직접 분리해보자라는 취지로 해당 프로젝트를 진행하였기 때문에 해당 분리하는 내용은 동일하여 생략하였습니다.
+
+## [Final] 6. 주소록 - bootstrap으로 스타일링 하기
+
+> [views/partials/head.ejs]()
+
+1. Mobile 브라우저는 데스크탑 사이트를 작은 화면에 보여주기 위해 자동으로 줌아웃 가능 : `viewport meta` 태그로 이를 조절 가능
+
+- `width` : device-width로 브라우저의 너비를 모바일 기기의 width로 지정
+- `initial-scale` : 1은 100%을 뜻합니다. 즉 사이트의 줌을 바꾸지 않습니다.
+
+2. bootstrap 공식 사이트 introduction 페이지 (https://getbootstrap.com/docs/41/getting-started/introduction)에서 제공하는 방법대로 Bootstrap을 설정
+
+- `<link rel="stylesheet" href=...>`로 bootstrap css파일을들, `<script src=...>`로 bootstrap에 필요한 js파일들을 불러옵니다.
+- 여기서 중요한 한가지가 있는데 내 css파일들 (여기서는 'master.css')들을 다른 라이브러리의 css파일들(여기서는 'bootstrap.min.css')뒤에 둬야합니다. css파일간에 충돌이 있는 경우 `뒤에 호출된 스타일 효과를 우선시`
+
+> [views/partials/nav.ejs]()
+
+- nav는 class판 추가된 것이 아니라 bootstrap nav 형식에 맞춰서 꽤 많이 변경이 이루어졌는데, 세부사항은 https://getbootstrap.com/docs/4.1/components/navbar 에서 공부하고 간략히 몇가지 class만 짚고 넘어감
+
+| class          | 설명                                                                                                                                    |
+| -------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| navbar         | bootstrap navbar를 알리는 class                                                                                                         |
+| container      | navbar 내용을 화면 가운데로 옮기는 목적으로 사용 > 한번 이 class를 지운후에 사이틀르 보면 정확히 무슨일을 하는 class인지 쉽게 확인 가능 |
+| navbar-band    | 사이트 제목을 넣는 클래스                                                                                                               |
+| navbar-toggler | 작은 화면에서 메뉴를 숨기고 보여주는 버튼의 class > data-target에 적용될 id를 넣습니다.                                                 |
+| collapse       | 위 navbar-toggler class의 대상이될 수 있는 class입니다. id를 맞춰줍니다.                                                                |
+| navbar-nav     | 실제 메뉴들을 가지는 class                                                                                                              |
+| nav-item       | 개별 메뉴들을 가지는 class                                                                                                              |
+
+> [views/contacts/index.ejs]()
+
+- 기존 코드에서 container, list-group, list-group-item class 등의 bootstrap class가 추가
+
+> [views/contacts/new.ejs]()
+
+- 기존 코드에서 container, btn btn-primary, form-group, form-control 등의 bootstrap class가 추가
+
+> [views/contacts/edit.ejs]()
+
+- 기존 코드에서 container, btn btn-primary, form-group, form-control 등의 bootstrap class 가 추가
+
+> [views/contacts/show.ejs])()
+
+- 기존 코드에서 containewr, btn btn-light class 등의 bootstrap class가 추가되고, bootstrap card(https://getbootstrap.com/docs/4.1/components/card)가 적용
+
+- > **1. 결과사진 : 메인 화면**
+  > <br>
+  > <img src="https://user-images.githubusercontent.com/41010744/104906566-3b1c3380-59c7-11eb-85bc-568ceba16b82.png">
+  > <br>
+
+- > **2. 결과사진 : 주소록 정보**
+  > <br>
+  > <img src="https://user-images.githubusercontent.com/41010744/104906696-656df100-59c7-11eb-9e1c-d4386a3530b8.png">
+  > <br>
+
+- > **3. 결과사진 : 회원 가입**
+  > <br>
+  > <img src="https://user-images.githubusercontent.com/41010744/104906800-83d3ec80-59c7-11eb-97ab-870cc99a094a.png">
+  > <br>
